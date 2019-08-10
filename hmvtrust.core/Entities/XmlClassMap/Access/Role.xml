@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   namespace="hmvtrust.core.Entities"
+                   assembly ="hmvtrust.core">
+  <class name="Role" table="Roles" lazy="false">
+    <cache usage="read-write"/>
+    <id name="Id" column="RoleId">
+      <generator class="identity"></generator>
+    </id>
+    <property     name="Name"                                         not-null="true"     length="50"                unique-key="uk_rolename" />
+    <property     name="CreatedDate"                                  not-null="true"                                                         />
+    <property     name="ModifiedDate"                                                                                                         />
+    <property     name="DeletedDate"                                                      unique-key="uk_useremail,uk_usermobile"             />
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping assembly="hmvtrust.core"
+                   namespace="hmvtrust.core.Entities"
+                   xmlns="urn:nhibernate-mapping-2.2">
+  
+  <class name="Branch" table="Branches" lazy="false" >
+    <id name="Id" column="BranchId">
+      <generator class="identity"></generator>
+    </id>
+    <property     name="BranchName"         length="500"              not-null="true"                                                         />
+    <property     name="BranchCode"         length="50"                                                                                       />
+    <property     name="Location"           length="50"               not-null="true"                                                         />
+    <property     name="PinCode"            length="25"               not-null="true"                                                         />
+
+    <property     name="CreatedDate"                                  not-null="true"                                                         />
+    <property     name="ModifiedDate"                                                                                                         />
+    <property     name="DeletedDate"                                                      unique-key="uk_useremail,uk_usermobile"             />
+
+
+  </class>
+</hibernate-mapping>

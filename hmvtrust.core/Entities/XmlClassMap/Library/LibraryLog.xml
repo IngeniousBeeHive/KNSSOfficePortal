@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping assembly="hmvtrust.core"
+                   namespace="hmvtrust.core.Entities"
+                   xmlns="urn:nhibernate-mapping-2.2">
+
+  <class name="LibraryLog" table="LibraryLog" lazy="false" >
+    <id name="Id" column="LogId">
+      <generator class="identity"></generator>
+    </id>
+    <property     name="BookNo"                                                                                               />
+    <property     name="BookName"         length="500"                                                                        />
+    <property     name="MemberName"       length="500"                                                                        />
+    <property     name="MobileNo"                                                                                             />
+    <property     name="Address"          length="500"                                                                        />
+    <property     name="CheckedOutDate"                                                                                       />
+    <property     name="ReturnedDate"                                                                                         />
+
+
+
+    <property     name="CreatedDate"                                  not-null="true"                                                         />
+    <property     name="ModifiedDate"                                                                                                         />
+    <property     name="DeletedDate"                                                      unique-key="uk_useremail,uk_usermobile"             />
+
+
+  </class>
+</hibernate-mapping>

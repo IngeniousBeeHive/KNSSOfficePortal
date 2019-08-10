@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping assembly="hmvtrust.core"
+                   namespace="hmvtrust.core.Entities"
+                   xmlns="urn:nhibernate-mapping-2.2">
+
+  <class name="BookCategory" table="BooksCategory" lazy="false" >
+    <id name="Id" column="CategoryId">
+      <generator class="identity"></generator>
+    </id>
+    <property     name="CategoryName"       length="500"                                                                        />
+    <property     name="Quantity"                                                                                               />
+
+    <property     name="CreatedDate"                                  not-null="true"                                                         />
+    <property     name="ModifiedDate"                                                                                                         />
+    <property     name="DeletedDate"                                                      unique-key="uk_useremail,uk_usermobile"             />
+
+
+  </class>
+</hibernate-mapping>

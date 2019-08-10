@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping assembly="hmvtrust.core"
+                   namespace="hmvtrust.core.Entities"
+                   xmlns="urn:nhibernate-mapping-2.2">
+  <class name="User" table="Users" lazy="false" >
+    <id name="Id" column="UserId">
+      <generator class="identity"></generator>
+    </id>
+    <property     name="FirstName"          length="100"              not-null="true"                                                         />
+    <property     name="MiddleName"         length="100"                                                                                      />
+    <property     name="LastName"           length="100"              not-null="true"                                                         />
+    <property     name="Email"              length="50"               not-null="true"     unique-key="uk_useremail"                           />
+    <property     name="UserName"           length="50"               not-null="true"     unique-key="uk_username"                            />
+    <property     name="Mobile"             length="50"               not-null="true"     unique-key="uk_usermobile"                          />
+    <property     name="AlternateContact"   length="50"                                                                                       />
+    <property     name="Password"           length="50"               not-null="true"                                                         />
+    <property     name="ProfilePhoto"       length="100"                                                                                      />
+    <property     name="LastLoginTime"                                                                                                        />
+    <property     name="IsLocked"                                     not-null="true"                                                         />
+    <property     name="IsInternal"                                   not-null="true"                                                         />
+    
+    
+    <property     name="CreatedDate"                                  not-null="true"                                                         />
+    <property     name="ModifiedDate"                                                                                                         />
+    <property     name="DeletedDate"                                                      unique-key="uk_useremail,uk_usermobile"             />
+
+    <set name="Roles" table="UserRoles" lazy="false" fetch="join">
+      <key column="UserId"/>
+      <many-to-many class="Role" column="RoleId"/>
+    </set>
+  </class>
+</hibernate-mapping>
