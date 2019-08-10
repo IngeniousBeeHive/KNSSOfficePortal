@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-configuration xmlns="urn:nhibernate-configuration-2.2">
+  <session-factory>
+    <property name="connection.provider">NHibernate.Connection.DriverConnectionProvider</property>
+    <property name="dialect">NHibernate.Dialect.MsSql2012Dialect</property>
+    <property name="connection.connection_string">Data Source=.;Integrated Security=SSPI;Initial Catalog=KNSS_Test;</property>
+
+
+    <mapping file="D:\InGeniousBeeHive\KNSS\KNSS_OfficePortal\hmvtrust.core\Entities\XmlClassMap\Access\Role.xml" />
+    <mapping file="D:\InGeniousBeeHive\KNSS\KNSS_OfficePortal\hmvtrust.core\Entities\XmlClassMap\Access\User.xml" />
+    <mapping file="D:\InGeniousBeeHive\KNSS\KNSS_OfficePortal\hmvtrust.core\Entities\XmlClassMap\Branch\Branch.xml" />
+    <mapping file="D:\InGeniousBeeHive\KNSS\KNSS_OfficePortal\hmvtrust.core\Entities\XmlClassMap\Library\BookCategory.xml" />
+    <mapping file="D:\InGeniousBeeHive\KNSS\KNSS_OfficePortal\hmvtrust.core\Entities\XmlClassMap\Library\Book.xml" />
+    <mapping file="D:\InGeniousBeeHive\KNSS\KNSS_OfficePortal\hmvtrust.core\Entities\XmlClassMap\Library\LibraryLog.xml" />
+  </session-factory>
+</hibernate-configuration>

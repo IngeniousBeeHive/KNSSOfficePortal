@@ -1,0 +1,115 @@
+﻿@model hmvtrust.core.Entities.LibraryLog
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    if (!string.IsNullOrEmpty(ViewBag.Error))
+    {
+        <div class="alert alert-danger alert-dark alert-page">
+            @ViewBag.Error
+        </div>
+
+    }
+}
+<div class="container-fluid flex-grow-1 container-p-y">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="media">
+                        <div class="media-body pt-2 ml-3">
+                            <div class="page-item">
+                                <h4 class="m-t-0 header-title" style="padding-top:10px;"><i class="fa fa-book-reader page-header-icon"></i>&nbsp;&nbsp;Create New Entry</h4>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-4">
+                <div class="card-body p-2">
+                    <form action="~/librarylog/create" method="post">
+
+                        <table class="table">
+                            <tr>
+                                <td>Book Number</td>
+                                <td>Book Name</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-group">
+                                        <div>
+                                            @Html.EditorFor(model => model.BookNo, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Book Number" } })
+                                            @Html.ValidationMessageFor(model => model.BookNo, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <div>
+                                            @Html.EditorFor(model => model.BookName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Book Name" } })
+                                            @Html.ValidationMessageFor(model => model.BookName, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Borrower's Name</td>
+                                <td>MobileNumber</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-group">
+                                        <div>
+                                            @Html.EditorFor(model => model.MemberName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Borrower's Name" } })
+                                            @Html.ValidationMessageFor(model => model.MemberName, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <div>
+                                            @Html.EditorFor(model => model.MobileNo, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter MobileNumber" } })
+                                            @Html.ValidationMessageFor(model => model.MobileNo, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="form-group">
+                            <label for="address">Address Details</label>
+                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Address Details" } })
+                            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                        </div>
+
+                        <table class="table">
+                            <tr>
+                                <td>Borrowed Date*</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-group" style="width:500px">
+                                        <div>
+                                            @Html.EditorFor(model => model.CheckedOutDate, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Borrowed Date" } })
+                                            @Html.ValidationMessageFor(model => model.CheckedOutDate, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </td>                                
+                            </tr>
+                        </table>
+                        <div class="form-group text-right m-b-0">
+                                <button class="btn btn-primary waves-effect waves-light" type="submit">
+                                    <span class="btn-label icon fa fa-save"></span>&nbsp;&nbsp; Submit
+                                </button>
+                                <a href="~/librarylog/list" class="btn btn-labeled btn-danger" type="reset">
+                                    <span class="btn-label icon fa fa-window-close"></span>&nbsp;&nbsp; Cancel
+                                </a>
+                         </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

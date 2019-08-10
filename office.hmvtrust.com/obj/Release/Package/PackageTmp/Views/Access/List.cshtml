@@ -1,0 +1,68 @@
+﻿@model List<hmvtrust.core.Entities.User>
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="container-fluid flex-grow-1 container-p-y">
+        <div class="row">
+            <div class="col-12">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="media">
+                            <div class="media-body pt-2 ml-3">
+                                <div class="page-item">
+                                    <div class="pull-right"><a href="~/access/create"><span class="btn btn-primary"> Add User</span></a>&nbsp;&nbsp;</div>
+                                    <h4 class="m-t-0 header-title" style="padding-top:10px;"><i class="fa fa-users page-header-icon"></i>&nbsp;&nbsp;Users List</h4>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-4">
+                    <div class="card-body p-2">
+                        <table class="table table-stripped">
+                            <thead>
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Email</th>
+                                    <th>Mobile</th>
+                                    <th>UserName</th>
+                                    <th>Password</th>
+                                    <th>Roles</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var user in Model)
+                                {
+                                <tr>
+                                    <td>@user.FirstName</td>
+                                    <td>@user.LastName</td>
+                                    <td>@user.Email</td>
+                                    <td>@user.Mobile</td>
+                                    <td>@user.UserName</td>
+                                    <td>@user.Password</td>
+                                    <td>
+                                        @foreach (var role in user.Roles)
+                                        {
+                                            <span>@role.Name , </span>
+                                        }
+                                    </td>
+                                    <td style="text-align:right;padding-right:50px;">
+                                        <a href="~/access/edit/@user.Id"><i class="menu-icon fa  fa-edit"></i></a>
+                                        |
+                                        <a href="~/access/delete/@user.Id"><i class="menu-icon fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+

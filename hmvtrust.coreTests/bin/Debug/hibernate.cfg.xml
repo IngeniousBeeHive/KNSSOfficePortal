@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-configuration xmlns="urn:nhibernate-configuration-2.2">
+  <session-factory>
+    <property name="connection.provider">NHibernate.Connection.DriverConnectionProvider</property>
+    <property name="dialect">NHibernate.Dialect.MsSql2012Dialect</property>
+    <property name="connection.connection_string">Data Source=52.77.88.220;Integrated Security=False;Initial Catalog=HMVSMS_Test;uid=sa;password=m@ng@10r3123$$</property>
+
+
+    <mapping file="D:\Attris Projects\hmvtrust.com\hmvtrust.core\Entities\XmlClassMap\Access\Role.xml" />
+    <mapping file="D:\Attris Projects\hmvtrust.com\hmvtrust.core\Entities\XmlClassMap\Access\User.xml" />
+
+  </session-factory>
+</hibernate-configuration>

@@ -1,0 +1,60 @@
+﻿@model List<hmvtrust.core.Entities.Book>
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid flex-grow-1 container-p-y">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="media">
+                        <div class="media-body pt-2 ml-3">
+                            <div class="page-item">
+                                <div class="pull-right"><a href="~/books/create" class="btn btn-primary waves-effect waves-light">Add New Book Details</a>&nbsp;&nbsp;</div>
+                                <h4 class="m-t-0 header-title" style="padding-top:10px;"><i class="fa fa-book-open page-header-icon"></i>&nbsp;&nbsp;Books List</h4>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-4">
+                <div class="card-body p-2">
+                    <table class="table table-stripped">
+                        <thead>
+                            <tr>
+                                <th>S.No.</th>
+                                <th>Book Number</th>
+                                <th>Book Name</th>
+                                <th>AuthorName</th>
+                                <th>Category</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{int count = 1;}
+                            @foreach (var br in Model.OrderBy(d => d.BookNo))
+                            {
+                            <tr>
+                                <td>@count</td>
+                                <td>@br.BookNo</td>
+                                <td>@br.BookName</td>
+                                <td>@br.AuthorName</td>
+                                <td>@br.CategoryId.CategoryName</td>
+                                <td style="text-align:right;padding-right:50px;">
+                                    <a href="~/books/edit/@br.Id"><i class="menu-icon fa  fa-edit"></i></a>
+                                    |
+                                    <a href="~/books/delete/@br.Id"><i class="menu-icon fa fa-trash"></i></a>
+                                </td>
+                            </tr>
+                                count++;
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

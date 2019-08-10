@@ -1,0 +1,62 @@
+﻿@model hmvtrust.core.Entities.BookCategory
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    if (!string.IsNullOrEmpty(ViewBag.Error))
+    {
+        <div class="alert alert-danger alert-dark alert-page">
+            @ViewBag.Error
+        </div>
+
+    }
+}
+<div class="container-fluid flex-grow-1 container-p-y">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="media">
+                        <div class="media-body pt-2 ml-3">
+                            <div class="page-item">
+                                <h4 class="m-t-0 header-title" style="padding-top:10px;"><i class="fa fa-building page-header-icon"></i>&nbsp;&nbsp;Book Category Details</h4>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-4">
+                <div class="card-body p-2">
+                    <form action="~/bookcategory/edit" method="post">
+                        <div class="form-group">
+                            <label for="categoryName">Category Name*</label>
+                            @Html.HiddenFor(model => model.Id)
+                            @Html.EditorFor(model => model.CategoryName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter CategoryName" } })
+                            @Html.ValidationMessageFor(model => model.CategoryName, "", new { @class = "text-danger" })
+
+                        </div>
+                        <div class="form-group">
+                            <label for="quantity">Quantity*</label>
+                            @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Quantity" } })
+                            @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+
+                        </div>                        
+                        <div class="form-group text-right m-b-0">
+                            <button class="btn btn-primary waves-effect waves-light" type="submit">
+                                <span class="btn-label icon fa fa-save"></span>&nbsp;&nbsp; Submit
+                            </button>
+                            <a href="~/bookcategory/list" class="btn btn-labeled btn-danger" type="reset">
+                                <span class="btn-label icon fa fa-window-close"></span>&nbsp;&nbsp; Cancel
+                            </a>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

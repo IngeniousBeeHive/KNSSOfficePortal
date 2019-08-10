@@ -1,0 +1,88 @@
+﻿@model hmvtrust.core.Entities.Branch
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    if (!string.IsNullOrEmpty(ViewBag.Error))
+    {
+        <div class="alert alert-danger alert-dark alert-page">
+            @ViewBag.Error
+        </div>
+
+    }
+}
+<div class="container-fluid flex-grow-1 container-p-y">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="media">
+                        <div class="media-body pt-2 ml-3">
+                            <div class="page-item">
+                                <h4 class="m-t-0 header-title" style="padding-top:10px;"><i class="fa fa-building page-header-icon"></i>&nbsp;&nbsp;Branches Details</h4>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-4">
+                <div class="card-body p-2">
+                    <form action="~/branch/delete" method="post">
+                        <div class="form-group">
+                            <label for="userName">Branch Name*</label>
+                            @Html.HiddenFor(model => model.Id)
+                            @Html.EditorFor(model => model.BranchName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.BranchName, "", new { @class = "text-danger" })
+
+                        </div>
+                        <div class="form-group">
+                            <label for="emailAddress">Branch Code*</label>
+                            @Html.EditorFor(model => model.BranchCode, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.BranchCode, "", new { @class = "text-danger" })
+
+                        </div>
+                        <div class="form-group">
+                            <label for="pass1">Location*</label>
+                            @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="pass1">PinCode*</label>
+                            @Html.EditorFor(model => model.PinCode, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.PinCode, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group text-right m-b-0">
+                            <button class="btn btn-primary waves-effect waves-light" type="button" data-toggle="modal" data-target="#DeleteModal">
+                                <span class="btn-label icon fa fa-trash"></span>&nbsp;&nbsp; Delete
+                            </button>
+                            <a href="~/branch/list" class="btn btn-labeled btn-danger" type="reset">
+                                <span class="btn-label icon fa fa-window-close"></span>&nbsp;&nbsp; Cancel
+                            </a>
+                        </div>
+                        <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                            <div class="modal-dialog modal-sm" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">Confirm Delete</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are you sure you want to delete:
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        <input type="submit" value="Delete" class="btn btn-danger" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

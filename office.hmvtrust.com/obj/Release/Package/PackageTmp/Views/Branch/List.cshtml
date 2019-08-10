@@ -1,0 +1,61 @@
+﻿@model List<hmvtrust.core.Entities.Branch>
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid flex-grow-1 container-p-y">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="media">
+                        <div class="media-body pt-2 ml-3">
+                            <div class="page-item">
+                                <div class="pull-right"><a href="~/branch/create"><span class="btn btn-primary"> Add Branch</span></a>&nbsp;&nbsp;</div>
+                                <h4 class="m-t-0 header-title" style="padding-top:10px;"><i class="fa fa-building page-header-icon"></i>&nbsp;&nbsp;Branches List</h4>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-4">
+                <div class="card-body p-2">
+                    <table class="table table-stripped">
+                        <thead>
+                            <tr>
+                                <th>S.No.</th>
+                                <th>Branch Name</th>
+                                <th>Branch Code</th>
+                                <th>Location</th>
+                                <th>PinCode</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{int count = 1;}
+                            @foreach (var br in Model.OrderBy(d => d.Id))
+                            {
+                                <tr>
+                                    <td>@count</td>
+                                    <td>@br.BranchName</td>
+                                    <td>@br.BranchCode</td>
+                                    <td>@br.Location</td>
+                                    <td>@br.PinCode</td>
+                                    <td style="text-align:right;padding-right:50px;">
+                                        <a href="~/branch/edit/@br.Id"><i class="menu-icon fa  fa-edit"></i></a>
+                                        |
+                                        <a href="~/branch/delete/@br.Id"><i class="menu-icon fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                                count++;
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div> 
+    </div>
+</div>

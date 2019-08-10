@@ -1,0 +1,159 @@
+﻿@model hmvtrust.core.Entities.LibraryLog
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    if (!string.IsNullOrEmpty(ViewBag.Error))
+    {
+        <div class="alert alert-danger alert-dark alert-page">
+            @ViewBag.Error
+        </div>
+
+    }
+}
+<div class="container-fluid flex-grow-1 container-p-y">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="media">
+                        <div class="media-body pt-2 ml-3">
+                            <div class="page-item">
+                                <h4 class="m-t-0 header-title" style="padding-top:10px;"><i class="fa fa-book-dead page-header-icon"></i>&nbsp;&nbsp;Log Details</h4>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-4">
+                <div class="card-body p-2">
+                    <form action="~/librarylog/delete" method="post">
+                        <div class="form-group">
+                            <table class="table">
+                                <tr>
+                                    <td>Book Number</td>
+                                    <td>Book Name</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <div>
+                                                @Html.HiddenFor(model => model.Id)
+                                                @Html.EditorFor(model => model.BookNo, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                @Html.ValidationMessageFor(model => model.BookNo, "", new { @class = "text-danger" })
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <div>
+                                                @Html.EditorFor(model => model.BookName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                @Html.ValidationMessageFor(model => model.BookName, "", new { @class = "text-danger" })
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Borrower's Name</td>
+                                    <td>MobileNumber</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <div>
+                                                @Html.EditorFor(model => model.MemberName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                @Html.ValidationMessageFor(model => model.MemberName, "", new { @class = "text-danger" })
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <div>
+                                                @Html.EditorFor(model => model.MobileNo, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                @Html.ValidationMessageFor(model => model.MobileNo, "", new { @class = "text-danger" })
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Address</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <div>
+                                                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Borrowed Date</td>
+                                    <td>Returned Date</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <div>
+                                                @Html.EditorFor(model => model.CheckedOutDate, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                @Html.ValidationMessageFor(model => model.CheckedOutDate, "", new { @class = "text-danger" })
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <div>
+                                                @Html.EditorFor(model => model.ReturnedDate, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                @Html.ValidationMessageFor(model => model.ReturnedDate, "", new { @class = "text-danger" })
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                                   
+
+                        </div>
+                        
+                        <div class="form-group text-right m-b-0">
+                            <button class="btn btn-primary waves-effect waves-light" type="button" data-toggle="modal" data-target="#DeleteModal">
+                                <span class="btn-label icon fa fa-trash"></span>&nbsp;&nbsp; Delete
+                            </button>
+                            <a href="~/books/list" class="btn btn-labeled btn-danger" type="reset">
+                                <span class="btn-label icon fa fa-window-close"></span>&nbsp;&nbsp; Cancel
+                            </a>
+                        </div>
+                        <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                            <div class="modal-dialog modal-sm" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">Confirm Delete</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are you sure you want to delete:
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        <input type="submit" value="Delete" class="btn btn-danger" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,120 @@
+﻿@model hmvtrust.core.Entities.User
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    if (!string.IsNullOrEmpty(ViewBag.Error))
+    {
+        <div class="alert alert-danger alert-dark alert-page">
+            @ViewBag.Error
+        </div>
+
+    }
+}
+<div class="container-fluid flex-grow-1 container-p-y">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="media">
+                        <div class="media-body pt-2 ml-3">
+                            <div class="page-item">
+                                <h4 class="m-t-0 header-title" style="padding-top:10px;"><i class="fa fa-users page-header-icon"></i>&nbsp;&nbsp;User Details</h4>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <form action="~/access/delete" method="post">
+                <div class="card mb-4">
+                    <div class="card-body p-2">
+                        <div class="form-group">
+                            <b>First Name<br /></b>
+                            @Html.HiddenFor(model => model.Id)
+                            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <b>Middle Name<br /></b>
+                            @Html.EditorFor(model => model.MiddleName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.MiddleName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <b>Last Name<br /></b>
+                            @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <b>Email Address<br /></b>
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <b>Mobile Number<br /></b>
+                            @Html.EditorFor(model => model.Mobile, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.Mobile, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <b>Alternate Contact<br /></b>
+                            @Html.EditorFor(model => model.AlternateContact, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.AlternateContact, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-4">
+                    <div class="card-body p-2">
+                        <h4 class="m-t-0 header-title"><b>Roles</b></h4>
+                        <div class="form-group">
+
+                            @{
+                                var allroles = ViewBag.Roles;
+                                foreach (var role in allroles)
+                                {
+                                    <div class="col-lg-3">
+                                        <div style="margin: 0;">
+                                            <label>
+                                                <span class="lbl">@role.Name</span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                }
+                            }
+                            <div><br /></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group text-right m-b-0">
+                    <button class="btn btn-primary waves-effect waves-light" type="button" data-toggle="modal" data-target="#DeleteModal">
+                        <span class="btn-label icon fa fa-trash"></span>&nbsp;&nbsp; Delete
+                    </button>
+                    <a href="~/access/list" class="btn btn-labeled btn-danger" type="reset">
+                        <span class="btn-label icon fa fa-window-close"></span>&nbsp;&nbsp; Cancel
+                    </a>
+                </div>
+                <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog modal-sm" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">Confirm Delete</h4>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to delete:
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <input type="submit" value="Delete" class="btn btn-danger" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
