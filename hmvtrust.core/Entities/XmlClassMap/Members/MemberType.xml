@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping assembly="hmvtrust.core"
+                   namespace="hmvtrust.core.Entities"
+                   xmlns="urn:nhibernate-mapping-2.2">
+
+  <class name="MemberType" table="MemberType" lazy="false" >
+    <id name="Id" column="MemberTypeId">
+      <generator class="identity"></generator>
+    </id>
+
+    <property     name="MemberTypeName"         length="500"                                                                                  />
+    <property     name="AgeLimit"               length="50"                                                                                   />
+
+    <property     name="CreatedDate"                                  not-null="true"                                                         />
+    <property     name="ModifiedDate"                                                                                                         />
+    <property     name="DeletedDate"                                                      unique-key="uk_useremail,uk_usermobile"             />
+
+
+  </class>
+</hibernate-mapping>

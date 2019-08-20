@@ -10,7 +10,7 @@
     <property     name="BookNo"                                                                                               />
     <property     name="BookName"         length="500"                                                                        />
     <property     name="MemberName"       length="500"                                                                        />
-    <property     name="MobileNo"                                                                                             />
+    <property     name="MobileNo"         length="50"                                                                         />
     <property     name="Address"          length="500"                                                                        />
     <property     name="CheckedOutDate"                                                                                       />
     <property     name="ReturnedDate"                                                                                         />

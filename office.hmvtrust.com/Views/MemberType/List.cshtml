@@ -1,0 +1,56 @@
+﻿@model List<hmvtrust.core.Entities.MemberType>
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid flex-grow-1 container-p-y">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="media">
+                        <div class="media-body pt-2 ml-3">
+                            <div class="page-item">
+                                <div class="pull-right"><a href="~/membertype/create" class="btn btn-primary waves-effect waves-light">Add Member Type</a>&nbsp;&nbsp;</div>
+                                <h4 class="m-t-0 header-title" style="padding-top:10px;"><i class="fa fa-user-tag page-header-icon"></i>&nbsp;&nbsp;Member Type List</h4>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-4">
+                <div class="card-body p-2">
+                    <table class="table table-stripped">
+                        <thead>
+                            <tr>
+                                <th>S.No.</th>
+                                <th>Member Type</th>
+                                <th>Age Limit</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{int count = 1;}
+                            @foreach (var br in Model)
+                            {
+                                <tr>
+                                    <td>@count</td>
+                                    <td>@br.MemberTypeName</td>
+                                    <td>@br.AgeLimit</td>
+                                    <td style="text-align:right;padding-right:50px;">
+                                        <a href="~/membertype/edit/@br.Id"><i class="menu-icon fa  fa-edit"></i></a>
+                                        |
+                                        <a href="~/membertype/delete/@br.Id"><i class="menu-icon fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                                count++;
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

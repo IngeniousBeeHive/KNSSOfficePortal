@@ -1,0 +1,58 @@
+﻿@model hmvtrust.core.Entities.MemberType
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    if (!string.IsNullOrEmpty(ViewBag.Error))
+    {
+        <div class="alert alert-danger alert-dark alert-page">
+            @ViewBag.Error
+        </div>
+
+    }
+}
+<div class="container-fluid flex-grow-1 container-p-y">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="media">
+                        <div class="media-body pt-2 ml-3">
+                            <div class="page-item">
+                                <h4 class="m-t-0 header-title" style="padding-top:10px;"><i class="fa fa-user-tag page-header-icon"></i>&nbsp;&nbsp;Member Type</h4>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-4">
+                <div class="card-body p-2">
+                    <form action="~/membertype/create" method="post">
+                        <div class="form-group">
+                            <label for="bookNumber">Member Type*</label>
+                            @Html.EditorFor(model => model.MemberTypeName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Member Type" } })
+                            @Html.ValidationMessageFor(model => model.MemberTypeName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="bookName">Age Limit*</label>
+                            @Html.EditorFor(model => model.AgeLimit, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter AgeLimit" } })
+                            @Html.ValidationMessageFor(model => model.AgeLimit, "", new { @class = "text-danger" })
+                        </div>                       
+                        <div class="form-group text-right m-b-0">
+                            <button class="btn btn-primary waves-effect waves-light" type="submit">
+                                <span class="btn-label icon fa fa-save"></span>&nbsp;&nbsp; Submit
+                            </button>
+                            <a href="~/membertype/list" class="btn btn-labeled btn-danger" type="reset">
+                                <span class="btn-label icon fa fa-window-close"></span>&nbsp;&nbsp; Cancel
+                            </a>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

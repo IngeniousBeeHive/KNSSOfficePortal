@@ -1,0 +1,77 @@
+﻿@model List<hmvtrust.core.Entities.Member>
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.Error))
+    {
+        <div class="alert alert-danger alert-dark alert-page">
+            @ViewBag.Error
+        </div>
+
+    }
+}
+
+<div class="container-fluid flex-grow-1 container-p-y">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="media">
+                        <div class="media-body pt-2 ml-3">
+                            <div class="page-item">
+                                <div class="pull-right"><a href="~/member/create" class="btn btn-primary waves-effect waves-light">Add New Member</a>&nbsp;&nbsp;</div>
+                                <h4 class="m-t-0 header-title" style="padding-top:10px;"><i class="fa fa-user-friends page-header-icon"></i>&nbsp;&nbsp;Member List</h4>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-4">
+                <div class="card-body p-2">
+                    <table class="table table-stripped">
+                        <thead>
+                            <tr>
+                                <th>S.No.</th>
+                                <th>Family Number</th>
+                                <th>MemberType Name</th>
+                                <th>Member Name</th>
+                                <th>Gender</th>
+                                <th>Age</th>
+                                <th>DateofBirth</th>
+                                <th>MobileNo</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{int count = 1;}
+                            @foreach (var br in Model.OrderBy(d => d.FamilyNo))
+                            {
+                                <tr>
+                                    <td>@count</td>
+                                    <td>@br.FamilyNo</td>
+                                    <td>@br.MemberTypeId.MemberTypeName</td>
+                                    <td>@br.MemberName</td>
+                                    <td>@br.Gender</td>
+                                    <td>@br.Age</td>
+                                    <td>@Convert.ToString(string.Format("{0:dd/MMMM/yyyy}", br.DateofBirth))</td>
+                                    <td>@br.MobileNo</td>
+                                    <td style="text-align:right;padding-right:50px;">
+                                        <a href="~/member/view/@br.Id"><i class="menu-icon fa  fa-eye"></i></a>
+                                        |
+                                        <a href="~/member/edit/@br.Id"><i class="menu-icon fa  fa-edit"></i></a>
+                                        |
+                                        <a href="~/member/delete/@br.Id"><i class="menu-icon fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                                count++;
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

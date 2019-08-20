@@ -30,7 +30,7 @@ namespace hmvtrust.core.Entities
                 return ret;
             }
             else
-                throw new DuplicateItemException("Book Category already exists");
+                throw new DuplicateItemException("Book  already exists");
         }
         bool IsDuplicate(Book r)
         {
@@ -51,6 +51,7 @@ namespace hmvtrust.core.Entities
 
         public List<Book> Get()
         {
+            bookdetails.First();
             return bookdetails;
         }
 

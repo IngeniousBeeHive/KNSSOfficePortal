@@ -1,0 +1,130 @@
+﻿@model List<hmvtrust.core.Entities.Member>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.Error))
+    {
+        <div class="alert alert-danger alert-dark alert-page">
+            @ViewBag.Error
+        </div>
+
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.Success))
+    {
+        <div class="alert alert-success alert-dark alert-page">
+            @ViewBag.Success
+        </div>
+
+    }
+}
+
+<div class="container-fluid flex-grow-1 container-p-y">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="media">
+                        <div class="media-body pt-2 ml-3">
+                            <div class="page-item">
+                                <div class="pull-right"><a href="~/member/create" class="btn btn-primary waves-effect waves-light">Add New Member</a>&nbsp;&nbsp;</div>
+                                <div class="pull-right"><a href="~/member/list" class="btn btn-secondary waves-effect waves-light">View All Members</a>&nbsp;&nbsp;</div>
+                                <h4 class="m-t-0 header-title" style="padding-top:10px;"><i class="fa fa-user-friends page-header-icon"></i>&nbsp;&nbsp;Member's Details</h4>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-4">
+                <div class="card-body p-2">
+                    <form action="/member/index" method="get">
+                        <table class="table">
+                            <tr>
+                                <td>
+                                    <label>Search By</label>
+                                    <select class="form-control custom-select" name="searchtype" id="searchtype">
+                                        <option value="0">Select a Option</option>
+                                        <option value="1">Family Number</option>
+                                        <option value="2">Member Name</option>
+                                        <option value="3">Member Type</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <label id="lbltext">Enter Option Value</label>
+                                    <input type="text" name="optionval" class="form-control" autocomplete="off" />
+                                </td>
+                            </tr>
+                        </table>
+                        <div style="text-align:right;"><button type="submit" class="btn btn-primary">Search</button></div>
+                    </form>
+
+                </div>
+            </div>
+            <div class="card mb-4">
+                <div class="card-body p-2">
+                    @if (Model.Count > 0)
+                    {
+                        <table class="table table-stripped">
+                            <thead>
+                                <tr>
+                                    <th>S.No.</th>
+                                    <th>Family Number</th>
+                                    <th>MemberType Name</th>
+                                    <th>Member Name</th>
+                                    <th>Gender</th>
+                                    <th>Age</th>
+                                    <th>DateofBirth</th>
+                                    <th>MobileNo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{int count = 1;}
+                                @foreach (var br in Model.OrderBy(d=>d.MemberName))
+                                {
+                                    <tr>
+                                        <td>@count</td>
+                                        <td>@br.FamilyNo</td>
+                                        <td>@br.MemberTypeId.MemberTypeName</td>
+                                        <td>@br.MemberName</td>
+                                        <td>@br.Gender</td>
+                                        <td>@br.Age</td>
+                                        <td>@Convert.ToString(string.Format("{0:dd/MMMM/yyyy}", br.DateofBirth))</td>
+                                        <td>@br.MobileNo</td>
+                                        <td style="text-align:right;padding-right:50px;">
+                                            <a href="~/member/view/@br.Id"><i class="menu-icon fa  fa-eye"></i></a>
+                                            |
+                                            <a href="~/member/edit/@br.Id"><i class="menu-icon fa  fa-edit"></i></a>
+                                            |
+                                            <a href="~/member/delete/@br.Id"><i class="menu-icon fa fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                    count++;
+                                }
+                            </tbody>
+                        </table>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $("#searchtype").change(function () {
+        var optionvalue = $("#searchtype option:selected").val();
+        if (optionvalue > 0) {
+            var optionSelected = $("#searchtype option:selected").text();
+            var seltext = "Enter " + optionSelected;
+            $('#lbltext').text(seltext);
+        }
+        else {
+            var seltext = "Enter Option Value";
+            $('#lbltext').text(seltext);
+        }
+    });
+</script>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using hmvtrust.core.Entities;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
@@ -8,18 +9,7 @@ using System.Threading.Tasks;
 
 namespace hmvtrust.core
 {
-    public enum MediaType
-    {
-        STUDENTPHOTO
-        , FATHERPHOTO
-        , MOTHERPHOTO
-        , GUARDIANPHOTO
-        , OTHER
-        , TEMPFILES
-        , PROFILEPHOTO
-        , DOWNLOADS
-        , DOCUMENTS
-    }
+     
     public class Util
     {
         public static MemoryStream ToMemoryStream(Stream stream, int length)
@@ -34,13 +24,13 @@ namespace hmvtrust.core
 
             return memoryStream;
         }
-
-        public static string Save(MemoryStream data
+        public static Media Save(MemoryStream data
                          , string fileName
                          , MediaType type
-                         , string EnrollmentNo)
+                         , int FamilyNo
+                         , string MemberName)
         {
-            string media = null;
+            Media media = null;
             string newfilename = string.Empty;
 
             if (data != null)
@@ -53,13 +43,13 @@ namespace hmvtrust.core
                 FileInfo fi = new FileInfo(fileName);
 
                 //Assign a uniquefile name 
-                if (string.IsNullOrEmpty(EnrollmentNo))
+                if (string.IsNullOrEmpty(MemberName))
                 {
                     newfilename = Guid.NewGuid().ToString() + fi.Extension;
                 }
                 else
                 {
-                    newfilename = EnrollmentNo + fi.Extension;
+                    newfilename = FamilyNo + "_" + MemberName + fi.Extension;
                 }
 
                 string currentpath = storagePath + "\\" + newfilename;
@@ -73,7 +63,11 @@ namespace hmvtrust.core
                 data.WriteTo(file);
                 file.Close();
                 data.Close();
-                media = newfilename;
+
+                Media m = new Media();
+                m.FileName = newfilename;
+                m.MediaType = type;
+                media = m;
             }
             return media;
         }

@@ -1,0 +1,109 @@
+﻿@model List<hmvtrust.core.Entities.Member>
+@{
+    ViewBag.Title = "FindBloodMatch";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.Error))
+    {
+        <div class="alert alert-danger alert-dark alert-page">
+            @ViewBag.Error
+        </div>
+
+    }
+}
+@{
+    if (!string.IsNullOrEmpty(ViewBag.Success))
+    {
+        <div class="alert alert-success alert-dark alert-page">
+            @ViewBag.Success
+        </div>
+
+    }
+}
+
+<div class="container-fluid flex-grow-1 container-p-y">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="media">
+                        <div class="media-body pt-2 ml-3">
+                            <div class="page-item">                                
+                                <h4 class="m-t-0 header-title" style="padding-top:10px;"><i class="fa fa-ambulance page-header-icon"></i>&nbsp;&nbsp;Find Blood Match</h4>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-4">
+                <div class="card-body p-2">
+                    <form action="/member/findbloodmatch" method="get">
+                        <table class="table">
+                            <tr>
+                                <td>
+                                    <label>Search Blood Group</label>
+                                    <select class="form-control custom-select" name="optionval" >
+                                        <option value="0">Select a Option</option>
+                                        <option value="A RhD positive (A+)">A RhD positive (A+)</option>
+                                        <option value="A RhD negative (A-)">A RhD negative (A-)</option>
+                                        <option value="B RhD positive (B+)">B RhD positive (B+)</option>
+                                        <option value="B RhD negative (B-)">B RhD negative (B-)</option>
+                                        <option value="O RhD positive (O+)">O RhD positive (O+)</option>
+                                        <option value="O RhD negative (O-)">O RhD negative (O-)</option>
+                                        <option value="AB RhD positive (AB+)">AB RhD positive (AB+)</option>
+                                        <option value="AB RhD negative (AB-)">AB RhD negative (AB-)</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                        <div style="text-align:right;"><button type="submit" class="btn btn-primary">Search</button></div>
+                    </form>
+
+                </div>
+            </div>
+            <div class="card mb-4">
+                <div class="card-body p-2">
+                    @if (Model.Count > 0)
+                    {
+                        <table class="table table-stripped">
+                            <thead>
+                                <tr>
+                                    <th>S.No.</th>
+                                    <th>BloodGroup</th>
+                                    <th>Family Number</th>
+                                    <th>Member Name</th>
+                                    <th>Gender</th>
+                                    <th>Age</th>
+                                    <th>MobileNo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{int count = 1;}
+                                @foreach (var br in Model.OrderBy(d => d.Age))
+                                {
+                                    <tr>
+                                        <td>@count</td>
+                                        <td>@br.BloodGroup</td>
+                                        <td>@br.FamilyNo</td>
+                                        <td>@br.MemberName</td>
+                                        <td>@br.Gender</td>
+                                        <td>@br.Age</td>
+                                        <td>@br.MobileNo</td>
+                                        <td style="text-align:right;padding-right:50px;">
+                                            <a href="~/member/view/@br.Id"><i class="menu-icon fa  fa-eye"></i></a>
+                                        </td>
+                                    </tr>
+                                    count++;
+                                }
+                            </tbody>
+                        </table>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

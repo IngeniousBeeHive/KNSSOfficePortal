@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace hmvtrust.core.Entities
 {
-    public class LibraryLog:AppBase
+    public class LibraryLog : AppBase
     {
         [Required]
         [RegularExpression("^[a-zA-Z0-9 ]+$", ErrorMessage = "BookNo does not accept special charater.")]
@@ -25,9 +25,10 @@ namespace hmvtrust.core.Entities
 
         [Required]
         [RegularExpression("^[0-9 ]+$", ErrorMessage = "MobileNo does not accept special charater.")]
-        public long MobileNo { get; set; }       
+        public string MobileNo { get; set; }       
         public string Address { get; set; }
 
+        [Required(ErrorMessage = "CheckedOutDate cannot be blank")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? CheckedOutDate { get; set; }
@@ -35,5 +36,7 @@ namespace hmvtrust.core.Entities
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? ReturnedDate { get; set; }
+
+      
     }
 }

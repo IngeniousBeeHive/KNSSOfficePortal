@@ -76,7 +76,7 @@
                     <span class="app-brand-logo demo bg-primary">
                         <img src="~/assets/img/logo1.png" width="24" height="24" />
                     </span>
-                    <a href="~/" class="app-brand-text demo sidenav-text font-weight-normal ml-2">KNSS</a>
+                    <a href="" class="app-brand-text demo sidenav-text font-weight-normal ml-2">KNSS</a>
                     <a href="javascript:void(0)" class="layout-sidenav-toggle sidenav-link text-large ml-auto">
                         <i class="ion ion-md-menu align-middle"></i>
                     </a>
@@ -86,12 +86,24 @@
 
                 <!-- Links -->
                 <ul class="sidenav-inner py-1">
-                    <li class="sidenav-item">
-                        <a href="~/" class="sidenav-link">
-                            <i class="sidenav-icon fa fa-home"></i>
-                            <div>Home</div>
-                        </a>
-                    </li>
+                    @if ((User.IsInRole("Admin")))
+                    {
+                        <li class="sidenav-item">
+                            <a href="~/home/index" class="sidenav-link">
+                                <i class="sidenav-icon fa fa-home"></i>
+                                <div>Home</div>
+                            </a>
+                        </li>
+                    }
+                    @*@if ((User.IsInRole("Librarian")))
+                    {
+                        <li class="sidenav-item">
+                            <a href="~/librarylog/index" class="sidenav-link">
+                                <i class="sidenav-icon fa fa-home"></i>
+                                <div>Home</div>
+                            </a>
+                        </li>
+                    }*@
                     @if ((User.IsInRole("Admin")))
                     {
                         <li class="sidenav-item">
@@ -111,10 +123,31 @@
                     @if ((User.IsInRole("Admin")))
                     {
                         <li class="sidenav-item">
-                            <a class="sidenav-link" href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
+                            <a class="sidenav-link" href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false">
+                                <i class="sidenav-icon fa fa-user-friends"></i> <span>Members</span>
+                            </a>
+                            <ul class="collapse list-unstyled" id="pageSubmenu1">
+                                <li class="sidenav-item active">
+                                    <a href="~/membertype/list" class="sidenav-link sidebar-dropdown-nav-link">
+                                        <i class="sidenav-icon fa fa-user-tag"></i><span>Member Type</span>
+                                    </a>
+                                </li>
+                                <li class="sidenav-item active">
+                                    <a href="~/member/index" class="sidenav-link sidebar-dropdown-nav-link">
+                                        <i class="sidenav-icon fa fa-user-secret"></i><span>Member Details</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+
+                    @if ((User.IsInRole("Admin")) || (User.IsInRole("Librarian")))
+                    {
+                        <li class="sidenav-item">
+                            <a class="sidenav-link" href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false">
                                 <i class="sidenav-icon fa fa-book-open"></i> <span>Library</span>
                             </a>
-                            <ul class="collapse list-unstyled" id="pageSubmenu">
+                            <ul class="collapse list-unstyled" id="pageSubmenu2">
                                 <li class="sidenav-item active">
                                     <a href="~/bookcategory/list" class="sidenav-link sidebar-dropdown-nav-link">
                                         <i class="sidenav-icon fa fa-bookmark"></i><span>Book Category</span>
@@ -137,9 +170,21 @@
                     @if ((User.IsInRole("Admin")))
                     {
                         <li class="sidenav-item">
-                            <a href="javascript:void(0);" class="sidenav-link">
-                                <i class="sidenav-icon fa fa-cogs"></i><span> Settings </span> <span class="menu-arrow"></span>
+                            <a class="sidenav-link" href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false">
+                                <i class="sidenav-icon fa fa-cogs"></i> <span>Settings</span>
                             </a>
+                            <ul class="collapse list-unstyled" id="pageSubmenu3">
+                                <li class="sidenav-item active">
+                                    <a href="~/member/findbloodmatch" class="sidenav-link sidebar-dropdown-nav-link">
+                                        <i class="sidenav-icon fa fa-ambulance"></i><span>Search Blood Type</span>
+                                    </a>
+                                </li>
+                                @*<li class="sidenav-item active">
+                                    <a href="~/member/index" class="sidenav-link sidebar-dropdown-nav-link">
+                                        <i class="sidenav-icon fa fa-user-secret"></i><span>Member Details</span>
+                                    </a>
+                                </li>*@
+                            </ul>
                         </li>
                     }
                 </ul>
@@ -236,9 +281,7 @@
         // Initialize popover component
         $(function () {
             $('[data-toggle="popover"]').popover()
-        })
-
-        
+        })       
     
     </script>
 

@@ -1,4 +1,5 @@
-﻿using hmvtrust.core.Entities;
+﻿using hmvtrust.core;
+using hmvtrust.core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,24 +19,19 @@ namespace office.hmvtrust.com.Controllers
         }
 
         [HttpGet]
+        public ActionResult Index()
+        {           
+            return View();
+        }
+
+        [HttpGet]
         public ActionResult List()
         {
             List<LibraryLog> logList = libraryLogRepository.Get();
             return View(logList);
         }
 
-        [HttpGet]
-        public ActionResult Received(int? Id)
-        {
-            if(Id.HasValue)
-            {
-                LibraryLog libraryLog = libraryLogRepository.Get(Id.Value);
-                DateTime curDate = DateTime.Now;
-                libraryLog.ReturnedDate =curDate;
-                libraryLogRepository.Update(libraryLog);
-            }
-            return RedirectToActionPermanent("List");
-        }
+
 
         [HttpGet]
         public ActionResult Create()
@@ -84,6 +80,7 @@ namespace office.hmvtrust.com.Controllers
                 {
                     libraryLogRepository.Update(logDetails);
                 }
+                List<LibraryLog> logList = libraryLogRepository.Get();
                 return RedirectToActionPermanent("List");
             }
             catch (Exception ex)
@@ -118,6 +115,5 @@ namespace office.hmvtrust.com.Controllers
             }
             return View(logDetails);
         }
-
     }
 }

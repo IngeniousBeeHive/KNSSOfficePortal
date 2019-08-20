@@ -91,6 +91,7 @@
     <Compile Include="Entities\Branch\Branch.cs" />
     <Compile Include="Entities\Branch\BranchRepository.cs" />
     <Compile Include="Entities\Branch\IBranchRepository.cs" />
+    <Compile Include="Entities\Common\Media.cs" />
     <Compile Include="Entities\Core\AppBase.cs" />
     <Compile Include="Entities\Core\AppContainer.cs" />
     <Compile Include="Entities\Library\Book.cs" />
@@ -102,6 +103,12 @@
     <Compile Include="Entities\Library\ILibraryLogRepository.cs" />
     <Compile Include="Entities\Library\LibraryLog.cs" />
     <Compile Include="Entities\Library\LibraryLogRepository.cs" />
+    <Compile Include="Entities\Members\IMemberRepository.cs" />
+    <Compile Include="Entities\Members\IMemberTypeRepository.cs" />
+    <Compile Include="Entities\Members\Member.cs" />
+    <Compile Include="Entities\Members\MemberRepository.cs" />
+    <Compile Include="Entities\Members\MemberType.cs" />
+    <Compile Include="Entities\Members\MemberTypeRepository.cs" />
     <Compile Include="Exceptions\DuplicateItemException.cs" />
     <Compile Include="Exceptions\InvalidDataException.cs" />
     <Compile Include="Exceptions\MissingDataException.cs" />
@@ -121,6 +128,8 @@
     <Content Include="Entities\XmlClassMap\Library\Book.xml" />
     <Content Include="Entities\XmlClassMap\Library\BookCategory.xml" />
     <Content Include="Entities\XmlClassMap\Library\LibraryLog.xml" />
+    <Content Include="Entities\XmlClassMap\Members\Member.xml" />
+    <Content Include="Entities\XmlClassMap\Members\MemberType.xml" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

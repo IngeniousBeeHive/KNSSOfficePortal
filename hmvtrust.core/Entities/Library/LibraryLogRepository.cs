@@ -95,9 +95,10 @@ namespace hmvtrust.core.Entities
                 f.ReturnedDate = t.ReturnedDate;
 
 
-                f = DbStore.Save<LibraryLog>(f);
-               
-                return f;
+
+            f = DbStore.Save<LibraryLog>(f);
+           
+            return f;
             
         }
     }

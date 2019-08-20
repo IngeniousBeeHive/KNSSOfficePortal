@@ -54,6 +54,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Spring\Spring.Core\bin\Debug\Microsoft.Practices.Unity.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
@@ -146,6 +147,7 @@
     <Content Include="assets\img\bg\16.jpg" />
     <Content Include="assets\img\bg\2.jpg" />
     <Content Include="assets\img\bg\21.jpg" />
+    <Content Include="assets\img\bg\22.png" />
     <Content Include="assets\img\bg\3.jpg" />
     <Content Include="assets\img\bg\4.jpg" />
     <Content Include="assets\img\bg\5.jpg" />
@@ -5657,11 +5659,12 @@
     <Compile Include="Controllers\Library\BookCategoryController.cs" />
     <Compile Include="Controllers\Library\BooksController.cs" />
     <Compile Include="Controllers\Library\LibraryLogController.cs" />
+    <Compile Include="Controllers\Members\MemberController.cs" />
+    <Compile Include="Controllers\Members\MemberTypeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\DocumentData.cs" />
-    <Compile Include="Models\Sectiondata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -5786,6 +5789,19 @@
     <Content Include="Views\LibraryLog\Edit.cshtml" />
     <Content Include="Views\LibraryLog\Delete.cshtml" />
     <None Include="Properties\PublishProfiles\KNSS.pubxml" />
+    <Content Include="Views\MemberType\List.cshtml" />
+    <Content Include="Views\MemberType\Create.cshtml" />
+    <Content Include="Views\MemberType\Edit.cshtml" />
+    <Content Include="Views\MemberType\Delete.cshtml" />
+    <Content Include="Views\Member\List.cshtml" />
+    <Content Include="Views\Member\Index.cshtml" />
+    <Content Include="Views\LibraryLog\Index.cshtml" />
+    <Content Include="Views\Member\View.cshtml" />
+    <Content Include="Views\Member\Create.cshtml" />
+    <Content Include="Views\Member\Delete.cshtml" />
+    <Content Include="Views\Member\Edit.cshtml" />
+    <Content Include="Views\Home\RenderBirthDayList.cshtml" />
+    <Content Include="Views\Member\FindBloodMatch.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -5817,7 +5833,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>50682</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:50684/</IISUrl>
+          <IISUrl>http://localhost:50682/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

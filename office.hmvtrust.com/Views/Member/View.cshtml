@@ -1,0 +1,179 @@
+﻿@model hmvtrust.core.Entities.Member
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    if (!string.IsNullOrEmpty(ViewBag.Error))
+    {
+        <div class="alert alert-danger alert-dark alert-page">
+            @ViewBag.Error
+        </div>
+
+    }
+}
+<div class="container-fluid flex-grow-1 container-p-y">
+    <div class="row">
+        <div class="col-12">           
+            <div class="card mb-4">
+                <div class="card-body p-2">
+                    <form action="~/member/view" method="get">
+                        <div class="form-group">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <div class="col-lg-3" style="padding:10px;">
+                                            <img style="border-radius:100px; " width="128" height="128" src="~/Media/MEMBERPHOTO/@(Model.Photo)" />
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>MemberType</td>
+                                    <td>Member Name</td>
+                                    <td>DateOfBirth</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <div>
+                                                @Html.HiddenFor(model => model.Id)
+                                                @Html.EditorFor(model => model.MemberTypeId.MemberTypeName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                @Html.ValidationMessageFor(model => model.MemberTypeId.MemberTypeName, "", new { @class = "text-danger" })
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <div>
+                                                @Html.EditorFor(model => model.MemberName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                @Html.ValidationMessageFor(model => model.MemberName, "", new { @class = "text-danger" })
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <div>
+                                                @Html.EditorFor(model => model.DateofBirth, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                @Html.ValidationMessageFor(model => model.DateofBirth, "", new { @class = "text-danger" })
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Gender</td>
+                                    <td>Age</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <div>
+                                                @Html.EditorFor(model => model.Gender, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <div>
+                                                @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Family Number</td>
+                                    <td>BloodGroup</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <div>
+                                                @Html.EditorFor(model => model.FamilyNo, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                @Html.ValidationMessageFor(model => model.FamilyNo, "", new { @class = "text-danger" })
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <div>
+                                                @Html.EditorFor(model => model.BloodGroup, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                @Html.ValidationMessageFor(model => model.BloodGroup, "", new { @class = "text-danger" })
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>MobileNumber</td>
+                                    <td>Alternate MobileNumber</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <div>
+                                                @Html.EditorFor(model => model.MobileNo, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                @Html.ValidationMessageFor(model => model.MobileNo, "", new { @class = "text-danger" })
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <div>
+                                                @Html.EditorFor(model => model.AlternateMobileNo, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                @Html.ValidationMessageFor(model => model.AlternateMobileNo, "", new { @class = "text-danger" })
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Email</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <div>
+                                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="form-group">
+                                <div>
+                                    <label for="address">Address Details</label>
+                                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="form-group text-right m-b-0">                            
+                            <a href="~/member/edit/@Model.Id" class="btn btn-labeled btn-success" type="reset">
+                                <span class="btn-label icon fa fa-edit"></span>&nbsp;&nbsp; Edit
+                            </a>
+                            <a href="~/member/index" class="btn btn-labeled btn-danger" type="reset">
+                                <span class="btn-label icon fa fa-window-close"></span>&nbsp;&nbsp; Cancel
+                            </a>
+                        </div>                      
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
