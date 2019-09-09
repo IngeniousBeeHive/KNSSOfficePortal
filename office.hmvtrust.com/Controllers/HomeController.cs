@@ -26,7 +26,7 @@ namespace office.hmvtrust.com.Controllers
             }
             else if (User.IsInRole("Librarian"))
             {
-                return RedirectPermanent("/librarylog/index");
+                return RedirectPermanent("/books/index");
             }
 
             return View();

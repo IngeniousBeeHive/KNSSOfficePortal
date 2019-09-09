@@ -9,7 +9,8 @@ namespace hmvtrust.core.Entities
 {
     public enum MediaType
     {
-        MEMBERPHOTO        
+        MEMBERPHOTO,
+        RECEIPTPHOTO
     }
     public class Media
     {

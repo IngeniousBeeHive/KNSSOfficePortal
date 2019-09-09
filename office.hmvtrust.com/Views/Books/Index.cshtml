@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="container-fluid flex-grow-1 container-p-y">
+        <h4 class="font-weight-bold py-3 mb-1">
+            Welcome to KNSS Library Dashboard
+            <div class="form-group text-right m-b-0">
+                <small class="font-weight-normal">Today is @DateTime.Now.ToLongDateString()</small>
+            </div>
+        </h4>
+        <div class="row">
+            <div class="col-12">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-12 card-box">
+                                <h4 class="text-left" style="margin-top:-10px;">Library Books Count</h4>
+                                <div class="panel-body pull-left">
+                                    <div class="widget-bg-color-icon">
+                                        <h4 class="text-center">Total Books</h4>
+                                        <div class="text-center">
+                                            <a href="~/books/list"><h1 style="color:green"><b class="counter">@ViewBag.LibraryBooks</b></h1></a>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>

@@ -20,6 +20,24 @@ namespace office.hmvtrust.com.Controllers
         }
 
         [HttpGet]
+        public ActionResult Index()
+        {
+            var bookCount = GetBooksCount();
+
+            ViewBag.LibraryBooks = bookCount.ToString();
+            return View();
+        }
+        public dynamic GetBooksCount()
+        {
+            List<Book> booksList = bookRepository.Get();
+            int data = booksList.Count();
+
+            return data;
+        }
+
+
+
+        [HttpGet]
         public ActionResult List()
         {
             List<Book> booksList = bookRepository.Get();

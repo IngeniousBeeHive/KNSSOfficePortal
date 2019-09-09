@@ -95,15 +95,15 @@
                             </a>
                         </li>
                     }
-                    @*@if ((User.IsInRole("Librarian")))
+                    @if ((User.IsInRole("Librarian")))
                     {
                         <li class="sidenav-item">
-                            <a href="~/librarylog/index" class="sidenav-link">
+                            <a href="~/books/index" class="sidenav-link">
                                 <i class="sidenav-icon fa fa-home"></i>
                                 <div>Home</div>
                             </a>
                         </li>
-                    }*@
+                    }
                     @if ((User.IsInRole("Admin")))
                     {
                         <li class="sidenav-item">
@@ -137,6 +137,41 @@
                                         <i class="sidenav-icon fa fa-user-secret"></i><span>Member Details</span>
                                     </a>
                                 </li>
+                            </ul>
+                        </li>
+                    }
+                    @if ((User.IsInRole("Admin")))
+                    {
+                        <li class="sidenav-item">
+                            <a class="sidenav-link" href="#pageSubmenu4" data-toggle="collapse" aria-expanded="false">
+                                <i class="sidenav-icon fa fa-money-check"></i> <span>Finance</span>
+                            </a>
+                            <ul class="collapse list-unstyled" id="pageSubmenu4">
+                                <li class="sidenav-item active">
+                                    <a href="~/pettycash/list" class="sidenav-link sidebar-dropdown-nav-link">
+                                        <i class="sidenav-icon fa fa-coins"></i><span>PettyCash</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                     @if ((User.IsInRole("Admin")))
+                    {
+                        <li class="sidenav-item">
+                            <a class="sidenav-link" href="#pageSubmenu5" data-toggle="collapse" aria-expanded="false">
+                                <i class="sidenav-icon fa fa-receipt"></i> <span>Reports</span>
+                            </a>
+                            <ul class="collapse list-unstyled" id="pageSubmenu5">
+                                <li class="sidenav-item active">
+                                    <a href="~/pettycash/list" class="sidenav-link sidebar-dropdown-nav-link">
+                                        <i class="sidenav-icon fa fa-coins"></i><span>PettyCash</span>
+                                    </a>
+                                </li>
+                                @*<li class="sidenav-item active">
+                        <a href="~/member/index" class="sidenav-link sidebar-dropdown-nav-link">
+                            <i class="sidenav-icon fa fa-user-secret"></i><span>Member Details</span>
+                        </a>
+                    </li>*@
                             </ul>
                         </li>
                     }
@@ -179,11 +214,6 @@
                                         <i class="sidenav-icon fa fa-ambulance"></i><span>Search Blood Type</span>
                                     </a>
                                 </li>
-                                @*<li class="sidenav-item active">
-                                    <a href="~/member/index" class="sidenav-link sidebar-dropdown-nav-link">
-                                        <i class="sidenav-icon fa fa-user-secret"></i><span>Member Details</span>
-                                    </a>
-                                </li>*@
                             </ul>
                         </li>
                     }

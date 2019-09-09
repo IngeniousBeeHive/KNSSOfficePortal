@@ -18,11 +18,7 @@ namespace office.hmvtrust.com.Controllers
             this.libraryLogRepository = libraryLogRepository;
         }
 
-        [HttpGet]
-        public ActionResult Index()
-        {           
-            return View();
-        }
+       
 
         [HttpGet]
         public ActionResult List()
@@ -31,6 +27,7 @@ namespace office.hmvtrust.com.Controllers
             return View(logList);
         }
 
+       
 
 
         [HttpGet]

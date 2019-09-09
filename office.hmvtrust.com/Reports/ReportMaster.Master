@@ -1,0 +1,92 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="ReportMaster.master.cs" Inherits="office.hmvtrust.com.Reports.ReportMaster" %>
+
+
+<!DOCTYPE html>
+<html class="gt-ie8 gt-ie9 not-ie">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
+    <meta name="author" content="Coderthemes">
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <title>KNSS Office Portal</title>
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/Content/core.css" rel="stylesheet" type="text/css">
+    <link href="/Content/icons.css" rel="stylesheet" type="text/css">
+    <link href="/Content/components.css" rel="stylesheet" type="text/css">
+    <link href="/Content/pages.css" rel="stylesheet" type="text/css">
+    <link href="/Content/menu.css" rel="stylesheet" type="text/css">
+    <link href="/Content/responsive.css" rel="stylesheet" type="text/css">
+    <link href="/plugins/switchery/switchery.min.css" rel="stylesheet" type="text/css">
+    <link href="/plugins/morris/morris.css" rel="stylesheet">
+    <link href="/Content/less/icons/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="/assets/stylesheets/SMS.css" rel="stylesheet" />
+ 
+    <script src="../Scripts/modernizr.min.js"></script>
+    <script src="/Scripts/jquery-3.0.0.min.js"></script>
+</head>
+<body class="fixed-left">
+     <form id="form1" runat="server">
+    <!-- Begin page -->
+
+            <div class="content">
+                <div class="container">
+
+                    <asp:ScriptManager ID="ScriptManager2" runat="server" ScriptMode="Release"></asp:ScriptManager> <!-- Display Reports -->
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">  
+                    </asp:ContentPlaceHolder>
+
+                </div>
+                <!-- end container -->
+            </div>
+
+
+    <script>
+        var resizefunc = [];
+    </script>
+
+    <!-- Plugins  -->
+    <script src="/Scripts/jquery.min.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
+
+    <script src="/Scripts/detect.js"></script>
+    <script src="/Scripts/fastclick.js"></script>
+    <script src="/Scripts/jquery.blockUI.js"></script>
+    <script src="/Scripts/waves.js"></script>
+    <script src="/Scripts/wow.min.js"></script>
+    <script src="/Scripts/jquery.nicescroll.js"></script>
+    <script src="/Scripts/jquery.scrollTo.min.js"></script>
+    <script src="/plugins/switchery/switchery.min.js"></script>
+    <script src="/Scripts/jquery.slimscroll.js"></script>
+
+    <!-- Counter Up  -->
+    <script src="/plugins/waypoints/lib/jquery.waypoints.js"></script>
+    <script src="/plugins/counterup/jquery.counterup.min.js"></script>
+
+    <!--Morris Chart-->
+    <script src="/plugins/morris/morris.min.js"></script>
+    <script src="/plugins/raphael/raphael-min.js"></script>
+
+    <!-- Page js  -->
+    <script src="/Scripts/pages/jquery.dashboard.js"></script>
+
+    <!-- Custom main Js -->
+    <script src="/Scripts/jquery.core.js"></script>
+    <script src="/Scripts/jquery.app.js"></script>
+
+    <script src="/assets/javascripts/pixel-admin.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function ($) {
+            $('.counter').counterUp({
+                delay: 100,
+                time: 1200
+            });
+        });
+
+    </script>
+</form>
+</body>
+</html>

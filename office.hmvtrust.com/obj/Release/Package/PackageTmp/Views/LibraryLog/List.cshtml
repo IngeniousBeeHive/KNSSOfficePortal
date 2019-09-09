@@ -50,12 +50,10 @@
                                     <td>@Convert.ToString(string.Format("{0:dd/MM/yyyy}", br.CheckedOutDate))</td>
                                     <td>@(br.ReturnedDate != null ? br.ReturnedDate.ToString().AsDateTime().ToShortDateString() : null)</td>
                                     <td style="text-align:right;padding-right:50px;">
-                                        <a href="~/librarylog/received/@br.Id" style="color:forestgreen;"><i class="menu-icon fa  fa-thumbs-up"></i></a>                                  
-                                        |
                                         <a href="~/librarylog/edit/@br.Id"><i class="menu-icon fa  fa-edit"></i></a>
                                         |
                                         <a href="~/librarylog/delete/@br.Id"><i class="menu-icon fa fa-trash"></i></a>
-                                    </td>
+                                       </td>
                                 </tr>
                                 count++;
                             }

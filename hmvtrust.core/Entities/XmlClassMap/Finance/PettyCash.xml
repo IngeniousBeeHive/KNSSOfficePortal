@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping assembly="hmvtrust.core"
+                   namespace="hmvtrust.core.Entities"
+                   xmlns="urn:nhibernate-mapping-2.2">
+
+  <class name="PettyCash" table="PettyCash" lazy="false" >
+    <id name="Id" column="PettyCashId">
+      <generator class="identity"></generator>
+    </id>
+
+    
+    <property     name="Description"          length="500"                                                                                           />
+    <property     name="Amount"                                                                                                                      />
+    <property     name="ReceivedDate"                                                                                                                />
+    <property     name="AttachedFiles"        length="500"                                                                                           />
+    
+    <property     name="CreatedDate"                                  not-null="true"                                                                />
+    <property     name="ModifiedDate"                                                                                                                />
+    <property     name="DeletedDate"                                                      unique-key="uk_useremail,uk_usermobile"                    />
+
+
+  </class>
+</hibernate-mapping>

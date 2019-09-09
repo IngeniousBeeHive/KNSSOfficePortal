@@ -1,0 +1,30 @@
+﻿@model IEnumerable<hmvtrust.core.Entities.Member>
+@{
+    Layout = null;
+}
+
+
+    @foreach (hmvtrust.core.Entities.Member s in ViewBag.BirthdayList)
+    {
+        if (Convert.ToString(s.DateofBirth).AsDateTime().Date == @DateTime.Now.ToLongDateString().AsDateTime().Date &&
+             Convert.ToString(s.DateofBirth).AsDateTime().Month == @DateTime.Now.ToLongDateString().AsDateTime().Month)
+        {
+            <div class="col-lg-9" style="padding:2px; display: inline-block;" >
+                <a href="/member/view/@s.Id">
+                    <div class="panel text-normal" stuid="@s.Id" style="cursor:pointer; margin-bottom:0px; color:black;">
+                        <div class="panel-body" style="padding:10px;">
+                            <div class="col-lg-3" style="padding:0px;">
+                                <img style="border-radius:70px;" src="~/Media/MEMBERPHOTO/@(s.Photo)" width="75" height="75" />
+                            </div>
+                            <div class="col-lg-9" style="padding:0px; ">
+                                <div class="text-xs text-primary text-bold" style="text-transform:uppercase;margin-bottom:5px;">MemberName : @s.MemberName</div>
+                                <div class="text-bold" style="text-transform:uppercase; margin-bottom:3px;" title="@s.MemberTypeId.MemberTypeName"><div style="width:100%;overflow:hidden; text-overflow:ellipsis; ">@s.MemberTypeId.MemberTypeName</div></div>
+                                <div class="text-xs" style="text-transform:uppercase">MobileNo : @s.MobileNo </div>
+                            </div>
+                        </div>                       
+                    </div>
+                </a>
+            </div>
+        }
+    }
+

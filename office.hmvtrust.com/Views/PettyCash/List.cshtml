@@ -1,0 +1,57 @@
+﻿@model List<hmvtrust.core.Entities.PettyCash>
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid flex-grow-1 container-p-y">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="media">
+                        <div class="media-body pt-2 ml-3">
+                            <div class="page-item">
+                                <div class="pull-right"><a href="~/pettycash/create" class="btn btn-primary waves-effect waves-light">Add PettyCash Entry</a>&nbsp;&nbsp;</div>
+                                <h4 class="m-t-0 header-title" style="padding-top:10px;"><i class="fa fa-book-open page-header-icon"></i>&nbsp;&nbsp;PettyCash List</h4>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-4">
+                <div class="card-body p-2">
+                    <table class="table table-stripped">
+                        <thead>
+                            <tr>
+                                <th>S.No.</th>
+                                <th>Description</th>
+                                <th>Amount</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{int count = 1;}
+                            @foreach (var pc in Model.OrderByDescending(d=>d.ReceivedDate))
+                            {
+                                <tr>
+                                    <td>@count</td>
+                                    <td>@pc.Description</td>
+                                    <td>@pc.Amount</td>
+                                    <td>@Convert.ToString(string.Format("{0:dd/MMMM/yyyy}", pc.ReceivedDate))</td>
+                                    <td style="text-align:right;padding-right:50px;">
+                                        <a href="~/pettycash/edit/@pc.Id"><i class="menu-icon fa  fa-edit"></i></a>
+                                        |
+                                        <a href="~/pettycash/delete/@pc.Id"><i class="menu-icon fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                                count++;
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

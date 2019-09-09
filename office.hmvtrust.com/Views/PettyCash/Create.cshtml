@@ -1,0 +1,119 @@
+﻿@model hmvtrust.core.Entities.PettyCash
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    if (!string.IsNullOrEmpty(ViewBag.Error))
+    {
+        <div class="alert alert-danger alert-dark alert-page">
+            @ViewBag.Error
+        </div>
+
+    }
+}
+<div class="container-fluid flex-grow-1 container-p-y">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="media">
+                        <div class="media-body pt-2 ml-3">
+                            <div class="page-item">
+                                <h4 class="m-t-0 header-title" style="padding-top:10px;"><i class="fa fa-coins page-header-icon"></i>&nbsp;&nbsp;Add New Entry</h4>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-4">
+                <div class="card-body p-2">
+                    <form action="~/pettycash/create" method="post" enctype="multipart/form-data">
+
+                        <div class="form-group">
+                            <label for="Description"></label>
+                            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Description" } })
+                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+
+                        </div>
+                        <table class="table">
+                            <tr>
+                                <td>Amount*</td>
+                                <td>Date</td>
+                            </tr>
+                            <tr>                                
+                                <td>
+                                    <div class="form-group">
+                                        <label for="Amount"></label>
+                                        @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Amount" } })
+                                        @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <label for="Date"></label>
+                                        @Html.EditorFor(model => model.ReceivedDate, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Date" } })
+                                        @Html.ValidationMessageFor(model => model.ReceivedDate, "", new { @class = "text-danger" })                                    
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                
+                                <td>Receipts</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-group">
+                                        <div>
+                                            <img src="~/assets/images/Noimages.png" width="128" height="128" id="receiptpho" />
+                                            <br />
+                                            <br />
+                                            <input type="file" class="pixel-file-input" name="receiptphoto" accept=".jpg" id="receiptphoto" />
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </table>
+
+
+                        <div class="form-group text-right m-b-0">
+                            <button class="btn btn-primary waves-effect waves-light" type="submit">
+                                <span class="btn-label icon fa fa-save"></span>&nbsp;&nbsp; Submit
+                            </button>
+                            <a href="~/pettycash/list" class="btn btn-labeled btn-danger" type="reset">
+                                <span class="btn-label icon fa fa-window-close"></span>&nbsp;&nbsp; Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+        $(function () {
+        $('#receiptphoto').change(function () {
+            var input = this;
+            var url = $(this).val();
+            var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+            if (input.files && input.files[0] && (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg")) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#receiptpho').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+            else {
+                $('#receiptpho').attr('src', '~/assets/images/Noimages.png');
+            }
+        });
+
+    });
+
+</script>

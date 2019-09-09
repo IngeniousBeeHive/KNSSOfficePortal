@@ -36,6 +36,7 @@ namespace hmvtrust.core.Entities
             container.RegisterType<ILibraryLogRepository, LibraryLogRepository>(new ContainerControlledLifetimeManager());
             container.RegisterType<IMemberTypeRepository, MemberTypeRepository>(new ContainerControlledLifetimeManager());
             container.RegisterType<IMemberRepository, MemberRepository>(new ContainerControlledLifetimeManager());
+            container.RegisterType<IPettyCashRepository, PettyCashRepository>(new ContainerControlledLifetimeManager());
             container.RegisterType<IOfficeAuthenticationManager, OfficeAuthenticationManager>(new ContainerControlledLifetimeManager());
         }
     }

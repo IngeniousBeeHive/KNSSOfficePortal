@@ -1,0 +1,20 @@
+﻿@{
+    hmvtrust.core.Entities.User user = ViewBag.LoggedInUser;
+}
+@{
+    ViewBag.Title = "MasterReport";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-title-box">
+            <ol class="breadcrumb pull-right"></ol>
+            <h4 class="m-t-0 header-title" style="padding-top:10px"><i class="fa fa-line-chart"></i>&nbsp;&nbsp;Reports</h4>
+        </div>
+    </div>
+</div>
+
+<iframe src="~/Reports/Index" width="100%" height="800" frameborder="0" style="margin-left:-10px"></iframe>

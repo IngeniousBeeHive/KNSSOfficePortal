@@ -54,6 +54,21 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Spring\Spring.Core\bin\Debug\Microsoft.Practices.Unity.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1358.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.3.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1358.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebDesign, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1358.0\lib\net40\Microsoft.ReportViewer.WebDesign.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1358.0\lib\net40\Microsoft.ReportViewer.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
@@ -5646,6 +5661,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Reports\MasterReports\PettyCash.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -5655,17 +5671,33 @@
     <Compile Include="Controllers\AccessController.cs" />
     <Compile Include="Controllers\AuthenticateController.cs" />
     <Compile Include="Controllers\BranchController.cs" />
+    <Compile Include="Controllers\Finance\PettyCashController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Library\BookCategoryController.cs" />
     <Compile Include="Controllers\Library\BooksController.cs" />
     <Compile Include="Controllers\Library\LibraryLogController.cs" />
     <Compile Include="Controllers\Members\MemberController.cs" />
     <Compile Include="Controllers\Members\MemberTypeController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\DocumentData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\MasterReports\PettyCash.aspx.cs">
+      <DependentUpon>PettyCash.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\MasterReports\PettyCash.aspx.designer.cs">
+      <DependentUpon>PettyCash.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ReportMaster.Master.cs">
+      <DependentUpon>ReportMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportMaster.Master.designer.cs">
+      <DependentUpon>ReportMaster.Master</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -5788,20 +5820,26 @@
     <Content Include="Views\LibraryLog\Create.cshtml" />
     <Content Include="Views\LibraryLog\Edit.cshtml" />
     <Content Include="Views\LibraryLog\Delete.cshtml" />
-    <None Include="Properties\PublishProfiles\KNSS.pubxml" />
     <Content Include="Views\MemberType\List.cshtml" />
     <Content Include="Views\MemberType\Create.cshtml" />
     <Content Include="Views\MemberType\Edit.cshtml" />
     <Content Include="Views\MemberType\Delete.cshtml" />
     <Content Include="Views\Member\List.cshtml" />
     <Content Include="Views\Member\Index.cshtml" />
-    <Content Include="Views\LibraryLog\Index.cshtml" />
     <Content Include="Views\Member\View.cshtml" />
     <Content Include="Views\Member\Create.cshtml" />
     <Content Include="Views\Member\Delete.cshtml" />
     <Content Include="Views\Member\Edit.cshtml" />
-    <Content Include="Views\Home\RenderBirthDayList.cshtml" />
+    <Content Include="Views\Home\_RenderBirthDayList.cshtml" />
     <Content Include="Views\Member\FindBloodMatch.cshtml" />
+    <Content Include="Views\Books\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\office.knss.pubxml" />
+    <Content Include="Views\PettyCash\List.cshtml" />
+    <Content Include="Views\PettyCash\Create.cshtml" />
+    <Content Include="Views\Reports\MasterReport.cshtml" />
+    <Content Include="Views\Reports\Index.cshtml" />
+    <Content Include="Reports\ReportMaster.Master" />
+    <Content Include="Reports\RDLC\rptPettyCash.rdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

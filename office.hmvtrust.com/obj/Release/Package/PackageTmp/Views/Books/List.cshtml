@@ -12,7 +12,7 @@
                     <div class="media">
                         <div class="media-body pt-2 ml-3">
                             <div class="page-item">
-                                <div class="pull-right"><a href="~/books/create" class="btn btn-primary waves-effect waves-light">Add New Book Details</a>&nbsp;&nbsp;</div>
+                                <div class="pull-right"><a href="~/books/create" class="btn btn-primary waves-effect waves-light">Add New Book</a>&nbsp;&nbsp;</div>
                                 <h4 class="m-t-0 header-title" style="padding-top:10px;"><i class="fa fa-book-open page-header-icon"></i>&nbsp;&nbsp;Books List</h4>
                             </div>
                         </div>
@@ -37,18 +37,18 @@
                             @{int count = 1;}
                             @foreach (var br in Model.OrderBy(d => d.BookNo))
                             {
-                            <tr>
-                                <td>@count</td>
-                                <td>@br.BookNo</td>
-                                <td>@br.BookName</td>
-                                <td>@br.AuthorName</td>
-                                <td>@br.CategoryId.CategoryName</td>
-                                <td style="text-align:right;padding-right:50px;">
-                                    <a href="~/books/edit/@br.Id"><i class="menu-icon fa  fa-edit"></i></a>
-                                    |
-                                    <a href="~/books/delete/@br.Id"><i class="menu-icon fa fa-trash"></i></a>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td>@count</td>
+                                    <td>@br.BookNo</td>
+                                    <td>@br.BookName</td>
+                                    <td>@br.AuthorName</td>
+                                    <td>@(br.CategoryId.CategoryName != null ?  br.CategoryId.CategoryName : null)</td>
+                                    <td style="text-align:right;padding-right:50px;">
+                                        <a href="~/books/edit/@br.Id"><i class="menu-icon fa  fa-edit"></i></a>
+                                        |
+                                        <a href="~/books/delete/@br.Id"><i class="menu-icon fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
                                 count++;
                             }
                         </tbody>

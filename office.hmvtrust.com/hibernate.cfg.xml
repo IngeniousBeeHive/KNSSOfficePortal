@@ -14,5 +14,6 @@
     <mapping file="D:\InGeniousBeeHive\KNSS_OfficePortal\hmvtrust.core\Entities\XmlClassMap\Library\LibraryLog.xml" />
     <mapping file="D:\InGeniousBeeHive\KNSS_OfficePortal\hmvtrust.core\Entities\XmlClassMap\Members\MemberType.xml" />
     <mapping file="D:\InGeniousBeeHive\KNSS_OfficePortal\hmvtrust.core\Entities\XmlClassMap\Members\Member.xml" />
+    <mapping file="D:\InGeniousBeeHive\KNSS_OfficePortal\hmvtrust.core\Entities\XmlClassMap\Finance\PettyCash.xml" />
   </session-factory>
 </hibernate-configuration>

@@ -71,5 +71,43 @@ namespace hmvtrust.core
             }
             return media;
         }
+
+        public static Media SaveReceipt(MemoryStream data
+                         , string fileName
+                         , MediaType type )
+        { 
+            Media media = null;
+            string newfilename = string.Empty;
+
+            if (data != null)
+            {
+                string storagePath = ConfigurationManager.AppSettings["documentpath"] + "\\" + type + "\\";
+
+                if (!Directory.Exists(storagePath))
+                    Directory.CreateDirectory(storagePath);
+
+                FileInfo fi = new FileInfo(fileName);
+
+                newfilename = Guid.NewGuid().ToString() + fi.Extension;
+                              
+                string currentpath = storagePath + "\\" + newfilename;
+
+                if (File.Exists(storagePath + "\\" + newfilename))
+                {
+                    File.Copy(currentpath, storagePath + "\\" + newfilename + "_Old.jpg", true);
+                }
+
+                FileStream file = new FileStream(storagePath + "\\" + newfilename, FileMode.Create, FileAccess.Write);
+                data.WriteTo(file);
+                file.Close();
+                data.Close();
+
+                Media m = new Media();
+                m.FileName = newfilename;
+                m.MediaType = type;
+                media = m;
+            }
+            return media;
+        }
     }
 }
