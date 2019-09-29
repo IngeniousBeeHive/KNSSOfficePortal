@@ -31,63 +31,110 @@
             <div class="card mb-4">
                 <div class="card-body p-2">
                     <form action="~/pettycash/create" method="post" enctype="multipart/form-data">
-
-                        <div class="form-group">
-                            <label for="Description"></label>
-                            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Description" } })
-                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-
-                        </div>
                         <table class="table">
                             <tr>
-                                <td>Amount*</td>
-                                <td>Date</td>
+                                <td>Paid To*</td>
+                                <td>EntryBy</td>
+                                <td>Status</td>
                             </tr>
-                            <tr>                                
+                            <tr>
                                 <td>
                                     <div class="form-group">
-                                        <label for="Amount"></label>
-                                        @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Amount" } })
-                                        @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+                                        @Html.EditorFor(model => model.PaidTo, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter PaidTo Name" } })
+                                        @Html.ValidationMessageFor(model => model.PaidTo, "", new { @class = "text-danger" })
 
                                     </div>
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <label for="Date"></label>
-                                        @Html.EditorFor(model => model.ReceivedDate, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Date" } })
-                                        @Html.ValidationMessageFor(model => model.ReceivedDate, "", new { @class = "text-danger" })                                    
+                                        @Html.EditorFor(model => model.EntryBy, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Entry Name" } })
+                                        @Html.ValidationMessageFor(model => model.EntryBy, "", new { @class = "text-danger" })
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="form-group">
+                                        @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Entry Name" } })
+                                        @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
                                     </div>
                                 </td>
                             </tr>
                             <tr>
-                                
-                                <td>Receipts</td>
+                                <td>PaymentMode</td>
+                                <td>TransactionId</td>
                             </tr>
                             <tr>
                                 <td>
                                     <div class="form-group">
-                                        <div>
-                                            <img src="~/assets/images/Noimages.png" width="128" height="128" id="receiptpho" />
-                                            <br />
-                                            <br />
-                                            <input type="file" class="pixel-file-input" name="receiptphoto" accept=".jpg" id="receiptphoto" />
-                                        </div>
+                                        @Html.EditorFor(model => model.PaymentMode, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter PaymentMode" } })
+                                        @Html.ValidationMessageFor(model => model.PaymentMode, "", new { @class = "text-danger" })
+
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        @Html.EditorFor(model => model.TransactionId, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter TransactionId" } })
+                                        @Html.ValidationMessageFor(model => model.TransactionId, "", new { @class = "text-danger" })
                                     </div>
                                 </td>
                             </tr>
-
                         </table>
+                            <div class="form-group">
+                                <label for="Description">Description</label>
+                                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Description" } })
+                                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+
+                            </div>
+                            <table class="table">
+                                <tr>
+                                    <td>Amount*</td>
+                                    <td>Date</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <label for="Amount"></label>
+                                            @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Amount" } })
+                                            @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <label for="Date"></label>
+                                            @Html.EditorFor(model => model.ReceivedDate, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Date" } })
+                                            @Html.ValidationMessageFor(model => model.ReceivedDate, "", new { @class = "text-danger" })
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <td>Receipts</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <div>
+                                                <img src="~/assets/images/Noimages.png" width="128" height="128" id="receiptpho" />
+                                                <br />
+                                                <br />
+                                                <input type="file" class="pixel-file-input" name="receiptphoto" accept=".jpg" id="receiptphoto" />
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </table>
 
 
-                        <div class="form-group text-right m-b-0">
-                            <button class="btn btn-primary waves-effect waves-light" type="submit">
-                                <span class="btn-label icon fa fa-save"></span>&nbsp;&nbsp; Submit
-                            </button>
-                            <a href="~/pettycash/list" class="btn btn-labeled btn-danger" type="reset">
-                                <span class="btn-label icon fa fa-window-close"></span>&nbsp;&nbsp; Cancel
-                            </a>
-                        </div>
+                            <div class="form-group text-right m-b-0">
+                                <button class="btn btn-primary waves-effect waves-light" type="submit">
+                                    <span class="btn-label icon fa fa-save"></span>&nbsp;&nbsp; Submit
+                                </button>
+                                <a href="~/pettycash/list" class="btn btn-labeled btn-danger" type="reset">
+                                    <span class="btn-label icon fa fa-window-close"></span>&nbsp;&nbsp; Cancel
+                                </a>
+                            </div>
                     </form>
                 </div>
             </div>

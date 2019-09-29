@@ -1,10 +1,15 @@
 ﻿using hmvtrust.core.Exceptions;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using NHibernate;
+using NHibernate.Cfg;
+using NHibernate.Linq;
 
 namespace hmvtrust.core.Entities
 {
@@ -84,14 +89,42 @@ namespace hmvtrust.core.Entities
                 throw new ArgumentNullException($"PettyCash with id {t.Id} does not exist or its deleted");
 
            
+            f.PaidTo = t.PaidTo;
             f.Description = t.Description;
             f.Amount = t.Amount;
+            f.PaymentMode = t.PaymentMode;
+            f.TransactionId = t.TransactionId;
             f.ReceivedDate = t.ReceivedDate;
+            f.EntryBy = t.EntryBy;
+            f.Status = t.Status;
             f.AttachedFiles = t.AttachedFiles;
 
             f = DbStore.Save<PettyCash>(f);
 
             return f;
+        }
+
+        public DataTable GetData(string query, Dictionary<string, object> parameters)
+        {
+            Configuration cfg = new Configuration();
+            string conString = cfg.GetProperty(NHibernate.Cfg.Environment.ConnectionString);
+            DataTable table = new DataTable();
+            using (SqlConnection con = new SqlConnection(conString))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand(query, con);
+                if (parameters != null)
+                {
+                    foreach (KeyValuePair<string, object> key in parameters)
+                    {
+                        cmd.Parameters.AddWithValue(key.Key, key.Value);
+                    }
+                }
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(table);
+                con.Dispose();
+            }
+            return table;
         }
     }
 }

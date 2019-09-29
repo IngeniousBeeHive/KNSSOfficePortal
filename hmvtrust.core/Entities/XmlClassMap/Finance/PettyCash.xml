@@ -8,9 +8,14 @@
       <generator class="identity"></generator>
     </id>
 
-    
+
+    <property     name="PaidTo"               length="50"                                                                                            />
     <property     name="Description"          length="500"                                                                                           />
     <property     name="Amount"                                                                                                                      />
+    <property     name="PaymentMode"          length="50"                                                                                            />
+    <property     name="TransactionId"        length="50"                                                                                            />
+    <property     name="EntryBy"              length="50"                                                                                            />
+    <property     name="Status"               length="50"                                                                                            />
     <property     name="ReceivedDate"                                                                                                                />
     <property     name="AttachedFiles"        length="500"                                                                                           />
     

@@ -66,5 +66,35 @@ namespace office.hmvtrust.com.Controllers.Finance
             }
             return View(pettyCashDetails);
         }
+
+        [HttpGet]
+        public ActionResult Edit(int? Id)
+        {
+            if (Id.HasValue)
+            {
+                PettyCash pettyCash = pettyCashRepository.Get(Id.Value);
+                return View(pettyCash);
+            }
+            return RedirectToActionPermanent("list");
+        }
+
+        [HttpPost]
+        public ActionResult Edit(PettyCash pettyCash)
+        {
+            try
+            {
+                if (pettyCash.IsValid)
+                {
+                    pettyCashRepository.Update(pettyCash);
+                    return RedirectToActionPermanent("List");
+                }
+                return RedirectToActionPermanent("List");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message;
+            }
+            return View(pettyCash);
+        }
     }
 }
